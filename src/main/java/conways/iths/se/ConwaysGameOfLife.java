@@ -28,6 +28,7 @@ public class ConwaysGameOfLife {
                 boolean alive = isCurrentPositionAlive(board[row][column]);
 
                 if (alive && neighboursAlive == 0) nextGenBoard[row][column] = 0;
+                else nextGenBoard[row][column] = board[row][column];
             }
         }
         return nextGenBoard;
