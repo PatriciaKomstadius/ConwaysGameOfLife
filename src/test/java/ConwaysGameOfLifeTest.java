@@ -101,6 +101,28 @@ public class ConwaysGameOfLifeTest {
         assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
     }
 
+    @Test
+    void boardWithFourLiveCellsShouldReturnBoardWithFourLiveCells() {
+
+        ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
+
+        int[][] board = {
+                {0, 0, 0, 0, 0},
+                {0, 1, 1, 0, 0},
+                {0, 1, 1, 0, 0},
+                {0, 0, 0, 0, 0}
+        };
+
+        int[][] expectedResult = {
+                {0, 0, 0, 0, 0},
+                {0, 1, 1, 0, 0},
+                {0, 1, 1, 0, 0},
+                {0, 0, 0, 0, 0}
+        };
+
+        assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
+    }
+
 
 
 
