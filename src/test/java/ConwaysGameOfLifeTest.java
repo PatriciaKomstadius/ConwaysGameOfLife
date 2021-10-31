@@ -37,7 +37,7 @@ public class ConwaysGameOfLifeTest {
     }
 
     @Test
-    void boardWithOneLiveCellAndNoLiveNeighboursShouldReturnBoardWithDeadCells() {
+    void oneLiveCellWithNoLiveNeighboursShouldDie() {
 
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
@@ -59,7 +59,7 @@ public class ConwaysGameOfLifeTest {
     }
 
     @Test
-    void boardWithTwoLiveCellsShouldReturnBoardWithDeadCells() {
+    void twoLiveCellsWithNoLiveNeighboursShouldDie() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
         int[][] board = {
@@ -102,7 +102,7 @@ public class ConwaysGameOfLifeTest {
     }
 
     @Test
-    void boardWithFourLiveCellsShouldReturnBoardWithFourLiveCells() {
+    void fourLiveCellNeighboursShouldStayAlive() {
 
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
@@ -124,7 +124,7 @@ public class ConwaysGameOfLifeTest {
     }
 
     @Test
-    void aliveCellWithMoreThanThreeLiveNeighboursShouldBecomeDead() {
+    void aLiveCellWithMoreThanThreeLiveNeighboursShouldDie() {
 
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
