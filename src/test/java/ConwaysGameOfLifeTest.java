@@ -80,7 +80,7 @@ public class ConwaysGameOfLifeTest {
     }
 
     @Test
-    void boardWithThreeLiveCellsShouldReturnBoardWithThreeLiveCells() {
+    void threeLiveCellNeighboursShouldStayAlive() {
 
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
@@ -94,7 +94,7 @@ public class ConwaysGameOfLifeTest {
         int[][] expectedResult = {
                 {0, 0, 0, 0, 0},
                 {0, 1, 1, 0, 0},
-                {0, 1, 0, 0, 0},
+                {0, 1, 1, 0, 0},
                 {0, 0, 0, 0, 0}
         };
 
@@ -137,7 +137,7 @@ public class ConwaysGameOfLifeTest {
 
         int[][] expectedResult = {
                 {0, 0, 0, 0, 0},
-                {0, 1, 0, 0, 0},
+                {0, 1, 0, 1, 0},
                 {0, 1, 0, 1, 0},
                 {0, 0, 0, 0, 0}
         };
