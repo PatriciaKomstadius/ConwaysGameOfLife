@@ -8,37 +8,32 @@ public class ConwaysGameOfLifeTest {
 
     @Test
     void currentPositionWithStateAliveShouldReturnTrue() {
-
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
-
         assertEquals(true, conwaysGameOfLife.isCurrentPositionAlive(1));
     }
 
     @Test
     void boardWithOnlyDeadCellsShouldReturnBoardWithDeadCells() {
-
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
-        int [][] board = {
+        int[][] board = {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
 
-        int [][] expectedResult = {
+        int[][] expectedResult = {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-
         assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
     }
 
     @Test
     void oneLiveCellWithNoLiveNeighboursShouldDie() {
-
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
         int[][] board = {
@@ -54,7 +49,6 @@ public class ConwaysGameOfLifeTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-
         assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
     }
 
@@ -75,13 +69,11 @@ public class ConwaysGameOfLifeTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-
         assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
     }
 
     @Test
     void threeLiveCellNeighboursShouldStayAlive() {
-
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
         int[][] board = {
@@ -97,13 +89,11 @@ public class ConwaysGameOfLifeTest {
                 {0, 1, 1, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-
         assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
     }
 
     @Test
     void fourLiveCellNeighboursShouldStayAlive() {
-
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
         int[][] board = {
@@ -119,13 +109,11 @@ public class ConwaysGameOfLifeTest {
                 {0, 1, 1, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-
         assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
     }
 
     @Test
     void aLiveCellWithMoreThanThreeLiveNeighboursShouldDie() {
-
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
         int[][] board = {
@@ -141,13 +129,11 @@ public class ConwaysGameOfLifeTest {
                 {0, 1, 0, 1, 0},
                 {0, 0, 0, 0, 0}
         };
-
         assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
     }
 
     @Test
     void deadCellWithThreeLiveNeighboursIsReborn() {
-
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
         int[][] board = {
@@ -163,10 +149,7 @@ public class ConwaysGameOfLifeTest {
                 {0, 1, 1, 0, 0},
                 {0, 0, 0, 0, 0}
         };
-
         assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
     }
-
-
 
 }
