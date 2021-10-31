@@ -13,6 +13,12 @@ public class ConwaysGameOfLifeTest {
     }
 
     @Test
+    void currentPositionWithStateDeadShouldReturnFalse() {
+        ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
+        assertEquals(false, conwaysGameOfLife.isCurrentPositionAlive(0));
+    }
+
+    @Test
     void boardWithOnlyDeadCellsShouldReturnBoardWithDeadCells() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
@@ -72,6 +78,7 @@ public class ConwaysGameOfLifeTest {
         assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
     }
 
+    //uppdaterat metod då villkoren uppdateras för döda celler - annan lösning?
     @Test
     void threeLiveCellNeighboursShouldStayAlive() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
@@ -112,6 +119,7 @@ public class ConwaysGameOfLifeTest {
         assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
     }
 
+    //uppdaterat metod då villkoren uppdateras för döda celler - annan lösning?
     @Test
     void aLiveCellWithMoreThanThreeLiveNeighboursShouldDie() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
