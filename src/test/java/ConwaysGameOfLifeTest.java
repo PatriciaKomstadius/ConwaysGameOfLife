@@ -1,5 +1,7 @@
+import conways.iths.se.ConwaysGameOfLife;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ConwaysGameOfLifeTest {
@@ -10,6 +12,29 @@ public class ConwaysGameOfLifeTest {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
         assertEquals(true, conwaysGameOfLife.isCurrentPositionAlive(1));
+    }
+
+    @Test
+    void boardWithOnlyDeadCellsShouldReturnBoardWithDeadCells() {
+
+        ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
+
+        int [][] board = {
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0}
+        };
+
+        int [][] expectedResult = {
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0}
+        };
+
+        assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
+
     }
 
 
