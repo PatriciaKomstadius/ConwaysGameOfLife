@@ -6,21 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ConwaysGameOfLifeTest {
 
-    @Test
-    void startGameShouldInitiateThisBoard(){
-        ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
-
-        int[][] expectedBoard = {
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
-                {0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 1, 0, 1, 0, 0, 0},
-                {0, 0, 0, 0, 1, 0, 1, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-        };
-
-        assertArrayEquals(expectedBoard, conwaysGameOfLife.startGame());
-    }
 
     @Test
     void currentPositionWithStateAliveShouldReturnTrue() {
