@@ -6,8 +6,10 @@ public class ConwaysGameOfLife {
     private final int ONE_ALIVE_NEIGHBOUR = 1;
     private final int THREE_ALIVE_NEIGHBOURS = 3;
 
-    public boolean isCurrentPositionAlive(int currentPositionValue) {
-        return currentPositionValue == 1;
+    //changed signature to enum State
+    public State isCurrentPositionAlive(int currentPositionValue) {
+        if(currentPositionValue == 1) return State.ALIVE;
+        else return State.DEAD;
     }
 
     public int[][] nextGeneration(int[][] board) {
@@ -23,12 +25,12 @@ public class ConwaysGameOfLife {
                     for (int k = -1; k <= 1; k++) neighboursAlive += board[row + i][column + k];
                 neighboursAlive -= board[row][column];
 
-                boolean alive = isCurrentPositionAlive(board[row][column]);
+                State state = isCurrentPositionAlive(board[row][column]);
 
                 //extracting magic numbers to field constants
-                if (alive && neighboursAlive <= ONE_ALIVE_NEIGHBOUR || alive && neighboursAlive > THREE_ALIVE_NEIGHBOURS) {
+                if (state == State.ALIVE && neighboursAlive <= ONE_ALIVE_NEIGHBOUR || state == State.ALIVE && neighboursAlive > THREE_ALIVE_NEIGHBOURS) {
                     nextGenBoard[row][column] = 0;
-                } else if (!alive && neighboursAlive == THREE_ALIVE_NEIGHBOURS) {
+                } else if (state == State.DEAD && neighboursAlive == THREE_ALIVE_NEIGHBOURS) {
                     nextGenBoard[row][column] = 1;
                 } else {
                     nextGenBoard[row][column] = board[row][column];

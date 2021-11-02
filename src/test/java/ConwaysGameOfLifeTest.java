@@ -1,4 +1,5 @@
 import conways.iths.se.ConwaysGameOfLife;
+import conways.iths.se.State;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -10,13 +11,15 @@ public class ConwaysGameOfLifeTest {
     @Test
     void currentPositionWithStateAliveShouldReturnTrue() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
-        assertEquals(true, conwaysGameOfLife.isCurrentPositionAlive(1));
+        State stateAlive = State.ALIVE;
+        assertEquals(stateAlive, conwaysGameOfLife.isCurrentPositionAlive(1));
     }
 
     @Test
     void currentPositionWithStateDeadShouldReturnFalse() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
-        assertEquals(false, conwaysGameOfLife.isCurrentPositionAlive(0));
+        State stateDead = State.DEAD;
+        assertEquals(stateDead, conwaysGameOfLife.isCurrentPositionAlive(0));
     }
 
     @Test
