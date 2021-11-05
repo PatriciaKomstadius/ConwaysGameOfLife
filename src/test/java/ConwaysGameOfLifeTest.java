@@ -23,6 +23,22 @@ public class ConwaysGameOfLifeTest {
     }
 
     @Test
+    void callingPrintGenerationShouldPrintOutBoard() {
+        ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
+
+        String expected = (" .  .  .  .  .  .  .  .  .  . \n" +
+                " .  *  *  .  .  .  .  *  .  . \n" +
+                " .  .  *  .  .  .  .  .  .  . \n" +
+                " .  .  .  .  *  *  .  .  .  . \n" +
+                " .  .  .  .  *  *  *  .  .  . \n" +
+                " .  .  .  .  .  .  .  .  .  . ");
+
+        assertEquals(expected, conwaysGameOfLife.printGeneration(conwaysGameOfLife.board()));
+    }
+
+
+
+    @Test
     void boardWithOnlyDeadCellsShouldReturnBoardWithDeadCells() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
@@ -82,7 +98,6 @@ public class ConwaysGameOfLifeTest {
         assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
     }
 
-    //uppdaterat metod då villkoren uppdateras för döda celler - annan lösning?
     @Test
     void threeLiveCellNeighboursShouldStayAlive() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
@@ -123,7 +138,6 @@ public class ConwaysGameOfLifeTest {
         assertArrayEquals(expectedResult, conwaysGameOfLife.nextGeneration(board));
     }
 
-    //uppdaterat metod då villkoren uppdateras för döda celler - annan lösning?
     @Test
     void aLiveCellWithMoreThanThreeLiveNeighboursShouldDie() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
