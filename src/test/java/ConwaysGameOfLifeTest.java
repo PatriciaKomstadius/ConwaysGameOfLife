@@ -1,5 +1,5 @@
 import conways.iths.se.ConwaysGameOfLife;
-import conways.iths.se.State;
+import conways.iths.se.CellState;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -11,22 +11,23 @@ public class ConwaysGameOfLifeTest {
     @Test
     void currentPositionWithStateAliveShouldReturnTrue() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
-        State stateAlive = State.ALIVE;
-        assertEquals(stateAlive, conwaysGameOfLife.isCurrentPositionAlive(1));
+        CellState cellStateAlive = CellState.ALIVE;
+        assertEquals(cellStateAlive, conwaysGameOfLife.isCurrentPositionAlive(1));
     }
 
     @Test
     void currentPositionWithStateDeadShouldReturnFalse() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
-        State stateDead = State.DEAD;
-        assertEquals(stateDead, conwaysGameOfLife.isCurrentPositionAlive(0));
+        CellState cellStateDead = CellState.DEAD;
+        assertEquals(cellStateDead, conwaysGameOfLife.isCurrentPositionAlive(0));
     }
 
     @Test
     void callingPrintGenerationShouldPrintOutBoard() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
 
-        String expected = (" .  .  .  .  .  .  .  .  .  . \n" +
+        String expected = (
+                " .  .  .  .  .  .  .  .  .  . \n" +
                 " .  *  *  .  .  .  .  *  .  . \n" +
                 " .  .  *  .  .  .  .  .  .  . \n" +
                 " .  .  .  .  *  *  .  .  .  . \n" +

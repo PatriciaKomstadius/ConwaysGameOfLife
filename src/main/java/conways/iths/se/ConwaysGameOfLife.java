@@ -56,32 +56,32 @@ public class ConwaysGameOfLife {
 
     private void calculateCellsForNextGeneration(int[][] board, int neighboursAlive) {
 
-        State state = isCurrentPositionAlive(board[row][column]);
+        CellState cellState = isCurrentPositionAlive(board[row][column]);
 
-        if (((state == State.ALIVE) && isFewerThanTwo(neighboursAlive)) || ((state == State.ALIVE) && isMoreThanThree(neighboursAlive))) {
+        if (((cellState == CellState.ALIVE) && isUnderpopulated(neighboursAlive)) || ((cellState == CellState.ALIVE) && isOvercrowded(neighboursAlive))) {
             nextGenBoard[row][column] = 0;
-        } else if ((state == State.DEAD) && isThreeAliveNeighbours(neighboursAlive)) {
+        } else if ((cellState == CellState.DEAD) && isReborn(neighboursAlive)) {
             nextGenBoard[row][column] = 1;
         } else {
             nextGenBoard[row][column] = board[row][column];
         }
     }
 
-    private boolean isThreeAliveNeighbours(int neighboursAlive) {
+    private boolean isReborn(int neighboursAlive) {
         return neighboursAlive == 3;
     }
 
-    private boolean isMoreThanThree(int neighboursAlive) {
+    private boolean isOvercrowded(int neighboursAlive) {
         return neighboursAlive > 3;
     }
 
-    private boolean isFewerThanTwo(int neighboursAlive) {
+    private boolean isUnderpopulated(int neighboursAlive) {
         return neighboursAlive <= 1;
     }
 
-    public State isCurrentPositionAlive(int currentPositionValue) {
-        if (currentPositionValue == 1) return State.ALIVE;
-        else return State.DEAD;
+    public CellState isCurrentPositionAlive(int currentPositionValue) {
+        if (currentPositionValue == 1) return CellState.ALIVE;
+        else return CellState.DEAD;
     }
 
     public String printGeneration(int[][] printThisBoard) {

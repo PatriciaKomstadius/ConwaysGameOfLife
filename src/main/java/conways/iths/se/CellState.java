@@ -1,6 +1,6 @@
 package conways.iths.se;
 
-public enum State {
+public enum CellState {
     ALIVE,
     DEAD
 }
