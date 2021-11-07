@@ -41,17 +41,22 @@ public class ConwaysGameOfLife {
         for (row = 1; row < board.length - 1; row++)
             for (column = 1; column < board[0].length - 1; column++) {
 
-                int neighboursAlive = 0;
-
-                for (int i = -1; i <= 1; i++)
-                    for (int j = -1; j <= 1; j++)
-                        neighboursAlive += board[row + i][column + j];
-                neighboursAlive -= board[row][column];
+                int neighboursAlive = countNeighbours(board);
 
                 calculateCellsForNextGeneration(board, neighboursAlive);
             }
 
         return nextGenBoard;
+    }
+
+    private int countNeighbours(int[][] board) {
+        int neighboursAlive = 0;
+
+        for (int i = -1; i <= 1; i++)
+            for (int j = -1; j <= 1; j++)
+                neighboursAlive += board[row + i][column + j];
+        neighboursAlive -= board[row][column];
+        return neighboursAlive;
     }
 
     private void calculateCellsForNextGeneration(int[][] board, int neighboursAlive) {
