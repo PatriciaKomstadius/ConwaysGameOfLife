@@ -6,17 +6,16 @@ public class ConwaysGameOfLife {
     private int[][] nextGenBoard;
     private int row;
     private int column;
-    private static final ConwaysGameOfLife gol = new ConwaysGameOfLife();
-
 
     public static void main(String[] args) {
 
+        ConwaysGameOfLife gol = new ConwaysGameOfLife();
 
-        System.out.println("----------- FIRST GENERATION ----------");
+        System.out.println("\n----------- FIRST GENERATION ----------");
 
         gol.printGeneration(gol.board());
 
-        System.out.println("----------- SECOND GENERATION ----------");
+        System.out.println("\n----------- SECOND GENERATION ----------");
 
         gol.printGeneration(gol.nextGeneration(gol.board()));
 
@@ -36,8 +35,6 @@ public class ConwaysGameOfLife {
     }
 
 
-
-
     public int[][] nextGeneration(int[][] board) {
 
         nextGenBoard = new int[board.length][board[0].length];
@@ -47,8 +44,9 @@ public class ConwaysGameOfLife {
 
                 int neighboursAlive = 0;
 
-                for (int i = -1; i <= 1; i++)
-                    for (int k = -1; k <= 1; k++) neighboursAlive += board[row + i][column + k];
+                for (int neighboursRow = -1; neighboursRow <= 1; neighboursRow++)
+                    for (int neighboursColumn = -1; neighboursColumn <= 1; neighboursColumn++)
+                        neighboursAlive += board[row + neighboursRow][column + neighboursColumn];
                 neighboursAlive -= board[row][column];
 
                 calculateCellsForNextGeneration(board, neighboursAlive);
@@ -64,9 +62,9 @@ public class ConwaysGameOfLife {
         int THREE_ALIVE_NEIGHBOURS = 3;
         int ONE_ALIVE_NEIGHBOUR = 1;
 
-        if (state == State.ALIVE && neighboursAlive <= ONE_ALIVE_NEIGHBOUR || state == State.ALIVE && neighboursAlive > THREE_ALIVE_NEIGHBOURS) {
+        if (((state == State.ALIVE) && (neighboursAlive <= ONE_ALIVE_NEIGHBOUR)) || ((state == State.ALIVE) && (neighboursAlive > THREE_ALIVE_NEIGHBOURS))) {
             nextGenBoard[row][column] = 0;
-        } else if (state == State.DEAD && neighboursAlive == THREE_ALIVE_NEIGHBOURS) {
+        } else if ((state == State.DEAD) && (neighboursAlive == THREE_ALIVE_NEIGHBOURS)) {
             nextGenBoard[row][column] = 1;
         } else {
             nextGenBoard[row][column] = board[row][column];
@@ -78,9 +76,9 @@ public class ConwaysGameOfLife {
         else return State.DEAD;
     }
 
-    public String printGeneration(int [][] printThisBoard) {
+    public String printGeneration(int[][] printThisBoard) {
 
-        return boardPrinter.printGeneration(printThisBoard);
+        return boardPrinter.printer(printThisBoard);
     }
 
 }
