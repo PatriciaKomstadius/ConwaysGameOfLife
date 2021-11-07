@@ -23,7 +23,7 @@ public class ConwaysGameOfLife {
 
     public int[][] board() {
 
-        int[][] initialBoard = {
+        return new int[][]{
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 1, 1, 0, 0, 0, 0, 1, 0, 0},
                 {0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
@@ -31,7 +31,6 @@ public class ConwaysGameOfLife {
                 {0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
         };
-        return initialBoard;
     }
 
 
@@ -44,9 +43,9 @@ public class ConwaysGameOfLife {
 
                 int neighboursAlive = 0;
 
-                for (int neighboursRow = -1; neighboursRow <= 1; neighboursRow++)
-                    for (int neighboursColumn = -1; neighboursColumn <= 1; neighboursColumn++)
-                        neighboursAlive += board[row + neighboursRow][column + neighboursColumn];
+                for (int i = -1; i <= 1; i++)
+                    for (int j = -1; j <= 1; j++)
+                        neighboursAlive += board[row + i][column + j];
                 neighboursAlive -= board[row][column];
 
                 calculateCellsForNextGeneration(board, neighboursAlive);
@@ -59,16 +58,25 @@ public class ConwaysGameOfLife {
 
         State state = isCurrentPositionAlive(board[row][column]);
 
-        int THREE_ALIVE_NEIGHBOURS = 3;
-        int ONE_ALIVE_NEIGHBOUR = 1;
-
-        if (((state == State.ALIVE) && (neighboursAlive <= ONE_ALIVE_NEIGHBOUR)) || ((state == State.ALIVE) && (neighboursAlive > THREE_ALIVE_NEIGHBOURS))) {
+        if (((state == State.ALIVE) && isFewerThanTwo(neighboursAlive)) || ((state == State.ALIVE) && isMoreThanThree(neighboursAlive))) {
             nextGenBoard[row][column] = 0;
-        } else if ((state == State.DEAD) && (neighboursAlive == THREE_ALIVE_NEIGHBOURS)) {
+        } else if ((state == State.DEAD) && isThreeAliveNeighbours(neighboursAlive)) {
             nextGenBoard[row][column] = 1;
         } else {
             nextGenBoard[row][column] = board[row][column];
         }
+    }
+
+    private boolean isThreeAliveNeighbours(int neighboursAlive) {
+        return neighboursAlive == 3;
+    }
+
+    private boolean isMoreThanThree(int neighboursAlive) {
+        return neighboursAlive > 3;
+    }
+
+    private boolean isFewerThanTwo(int neighboursAlive) {
+        return neighboursAlive <= 1;
     }
 
     public State isCurrentPositionAlive(int currentPositionValue) {
