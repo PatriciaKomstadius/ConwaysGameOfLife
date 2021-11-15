@@ -9,14 +9,14 @@ public class ConwaysGameOfLifeTest {
 
 
     @Test
-    void currentPositionWithStateAliveShouldReturnTrue() {
+    void currentPositionWithStateAliveShouldReturnALIVE() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
         CellState cellStateAlive = CellState.ALIVE;
         assertEquals(cellStateAlive, conwaysGameOfLife.isCurrentPositionAlive(1));
     }
 
     @Test
-    void currentPositionWithStateDeadShouldReturnFalse() {
+    void currentPositionWithStateDeadShouldReturnDEAD() {
         ConwaysGameOfLife conwaysGameOfLife = new ConwaysGameOfLife();
         CellState cellStateDead = CellState.DEAD;
         assertEquals(cellStateDead, conwaysGameOfLife.isCurrentPositionAlive(0));
